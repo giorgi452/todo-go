@@ -16,7 +16,7 @@ func main() {
 	}
 
 	fmt.Println("--- Welcome to Todo ---")
-	fmt.Println("Enter command (add, list, edit, done, delete) or 'exit' to quit")
+	fmt.Println("Enter command (add, list, edit, done, delete, help) or 'exit' to quit")
 
 	scanner := bufio.NewScanner(os.Stdin)
 	for {

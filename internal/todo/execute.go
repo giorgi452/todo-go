@@ -15,12 +15,12 @@ func Execute(args []string) {
 	switch cmd {
 	case "add":
 		if len(args) < 2 {
-			fmt.Println("❌ Error: Missing task description")
+			fmt.Println("Error: Missing task description")
 			return
 		}
 		task := strings.Join(args[1:], " ")
 		item, _ := Add(task)
-		fmt.Printf("✅ Added: %s (ID: %d)\n", item.Task, item.ID)
+		fmt.Printf("Added: %s (ID: %d)\n", item.Task, item.ID)
 
 	case "list":
 		items, _ := Load()
@@ -45,7 +45,7 @@ func Execute(args []string) {
 			fmt.Println("Error:", err)
 			return
 		}
-		fmt.Println("✏️ Item updated!")
+		fmt.Println("Item updated!")
 
 	case "done":
 		if len(args) < 2 {
@@ -60,7 +60,7 @@ func Execute(args []string) {
 				fmt.Println("Error:", err)
 				return
 			}
-			fmt.Printf("✅ Item %d marked as done!\n", id)
+			fmt.Printf("Item %d marked as done!\n", id)
 		}
 
 	case "delete":
@@ -72,10 +72,10 @@ func Execute(args []string) {
 			id, _ := strconv.Atoi(item)
 			err := Delete(id)
 			if err != nil {
-				fmt.Printf("❌ Error: %v\n", err)
+				fmt.Printf("Error: %v\n", err)
 				return
 			}
-			fmt.Printf("🗑️ Deleted item %d\n", id)
+			fmt.Printf("Deleted item %d\n", id)
 		}
 
 	case "clear":
@@ -102,11 +102,11 @@ func Execute(args []string) {
 	default:
 		suggestion := suggestCommand(cmd)
 		if suggestion != "" {
-			fmt.Printf("❓ Unknown command '%s'. Did you mean '%s'?\n", cmd, suggestion)
+			fmt.Printf("Unknown command '%s'. Did you mean '%s'?\n", cmd, suggestion)
 			args[0] = suggestion
 			Execute(args)
 		} else {
-			fmt.Println("❌ Unknown command. Type 'help' for options.")
+			fmt.Println("Unknown command. Type 'help' for options.")
 		}
 	}
 }
