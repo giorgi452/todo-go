@@ -2,6 +2,9 @@ package todo
 
 import (
 	"fmt"
+	"os"
+	"os/exec"
+	"runtime"
 	"strconv"
 	"strings"
 )
@@ -75,7 +78,17 @@ func Execute(args []string) {
 			fmt.Printf("🗑️ Deleted item %d\n", id)
 		}
 
+	case "clear":
+		var cmd *exec.Cmd
+		if runtime.GOOS == "windows" {
+			cmd = exec.Command("cmd", "/c", "cls")
+		} else {
+			cmd = exec.Command("clear")
+		}
+		cmd.Stdout = os.Stdout
+		cmd.Run()
+
 	default:
-		fmt.Println("Unknown command. Try: add, list, edit, done, delete, or exit")
+		fmt.Println("Unknown command. Try: add, list, edit, done, delete, clear or exit")
 	}
 }
