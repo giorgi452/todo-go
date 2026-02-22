@@ -50,13 +50,15 @@ func Execute(args []string) {
 			return
 		}
 
-		id, _ := strconv.Atoi(args[1])
-		err := Edit(id, "", true)
-		if err != nil {
-			fmt.Println("Error:", err)
-			return
+		for _, item := range args[1:] {
+			id, _ := strconv.Atoi(item)
+			err := Edit(id, "", true)
+			if err != nil {
+				fmt.Println("Error:", err)
+				return
+			}
+			fmt.Printf("✅ Item %d marked as done!\n", id)
 		}
-		fmt.Println("✅ Item marked as done!")
 
 	case "delete":
 		if len(args) < 2 {
