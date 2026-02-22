@@ -88,6 +88,17 @@ func Execute(args []string) {
 		cmd.Stdout = os.Stdout
 		cmd.Run()
 
+	case "help":
+		fmt.Println("It's seems you need help here's instructions how to use todo app")
+		fmt.Println("To add task: add <task_description>")
+		fmt.Println("To list tasks: list")
+		fmt.Println("To edit task: edit <task_id> <task_description>")
+		fmt.Println("To mark task as completed: done <task_id>")
+		fmt.Println("To delete task: delete <task_id>")
+		fmt.Println("To clear console: clear")
+		fmt.Println("To quit: exit")
+		fmt.Println("Pro Tip: you can delete/done multiple tasks")
+
 	default:
 		suggestion := suggestCommand(cmd)
 		if suggestion != "" {

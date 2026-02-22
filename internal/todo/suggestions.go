@@ -46,7 +46,7 @@ func min(a, b, c int) int {
 }
 
 func suggestCommand(input string) string {
-	commands := []string{"add", "list", "edit", "done", "delete", "clear", "exit", "quit"}
+	commands := []string{"add", "list", "edit", "done", "delete", "clear", "help", "exit", "quit"}
 
 	closest := ""
 	minDist := 3
