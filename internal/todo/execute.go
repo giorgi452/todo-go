@@ -89,6 +89,13 @@ func Execute(args []string) {
 		cmd.Run()
 
 	default:
-		fmt.Println("Unknown command. Try: add, list, edit, done, delete, clear or exit")
+		suggestion := suggestCommand(cmd)
+		if suggestion != "" {
+			fmt.Printf("❓ Unknown command '%s'. Did you mean '%s'?\n", cmd, suggestion)
+			args[0] = suggestion
+			Execute(args)
+		} else {
+			fmt.Println("❌ Unknown command. Type 'help' for options.")
+		}
 	}
 }
